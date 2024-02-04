@@ -1,0 +1,14 @@
+{
+  "authentication": {
+    "login": {
+      "page_tab_title": "Vamos | Login",
+      "title": "Login",
+      "email": "Email ID",
+      "forgotPassword": "Forgot Password?",
+      "password": "Password",
+      "login_button": "Login",
+      "password_error": "Please enter your password.",
+      "email_error": "Please enter your email address."
+    }
+  }
+}

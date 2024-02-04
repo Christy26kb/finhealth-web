@@ -1,13 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  /* font-family: 'Manrope';
+  src: url(./fonts/manrope/Manrope-VariableFont_wght.ttf); */
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #727782;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bbc0c5;
+  border-radius: 100px;
+}
+
+@layer base {
+  .semi-bold-text {
+    @apply font-semibold text-black;
+  }
+  .normal-text {
+    @apply font-normal text-black;
+  }
+  .medium-text {
+    @apply font-medium text-black;
+  }
+  .bold-text {
+    @apply font-bold text-black;
+  }
+
+  .text-h1 {
+    @apply text-38px semi-bold-text;
+  }
+  .text-h2 {
+    @apply text-3xl semi-bold-text;
+  }
+  .text-h3 {
+    @apply text-2xl semi-bold-text;
+  }
+  .text-h4 {
+    @apply text-22px bold-text;
+  }
+  .text-h5 {
+    @apply text-lg semi-bold-text;
+  }
+  .text-h6 {
+    @apply text-base semi-bold-text;
+  }
+
+  .text-body-base {
+    @apply text-base normal-text;
+  }
+  .text-body-base-md {
+    @apply text-base medium-text;
+  }
+  .text-body-base-semi {
+    @apply text-base semi-bold-text;
+  }
+  .text-body-base-bold {
+    @apply text-base bold-text;
+  }
+  .text-body {
+    @apply text-sm normal-text;
+  }
+  .text-body-md {
+    @apply text-sm medium-text;
+  }
+  .text-body-semi {
+    @apply text-sm semi-bold-text;
+  }
+  .text-body-bold {
+    @apply text-sm bold-text;
+  }
+  .text-caption {
+    @apply text-xs normal-text;
+  }
+  .text-caption-semi {
+    @apply text-xs semi-bold-text;
+  }
 }
