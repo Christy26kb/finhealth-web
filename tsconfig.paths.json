@@ -1,0 +1,52 @@
+{
+  "compilerOptions": {
+      "baseUrl": "./src",
+      "paths": {
+          "@assets": [
+              "./assets"
+          ],
+          "@components/*": [
+              "./components/*"
+          ],
+          "@components": [
+              "./components"
+          ],
+          "@layouts/*": [
+              "./layouts/*"
+          ],
+          "@constants/*": [
+              "./constants/*"
+          ],
+          "@core/*": [
+              "./core/*"
+          ],
+          "@utils/*": [
+              "./utils/*"
+          ],
+          "@config": [
+              "./config"
+          ],
+          "@contexts/*": [
+              "./contexts/*"
+          ],
+          "@features/*": [
+              "./features/*"
+          ],
+          "@routes": [
+              "./routes"
+          ],
+          "@hooks/*": [
+              "./hooks/*"
+          ],
+          "@mocks/*": [
+              "./mocks/*"
+          ],
+          "@types": [
+              "./types"
+          ],
+          "@i18n": [
+              "./i18n"
+          ]
+      }
+  }
+}

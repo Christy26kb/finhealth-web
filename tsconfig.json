@@ -21,6 +21,11 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
-  ]
+    "src",
+    "themes",
+    "tailwind.config.js",
+    "postcss.config.js",
+    "config-overrides.js"
+  ],
+  "extends": "./tsconfig.paths.json"
 }
