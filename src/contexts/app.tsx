@@ -6,6 +6,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { store } from '../core/store';
 import LocaleProvider from './locale';
 import { ThemeProvider } from './theme';
+import AntdAppProvider from './antd';
 
 type AppProviderProps = {
   children: ReactNode;
@@ -16,7 +17,9 @@ const AppProvider = ({ children }: AppProviderProps) => (
     <Provider store={store}>
       <HelmetProvider>
         <LocaleProvider>
-          <Router>{children}</Router>
+          <AntdAppProvider>
+            <Router>{children}</Router>
+          </AntdAppProvider>
         </LocaleProvider>
       </HelmetProvider>
     </Provider>

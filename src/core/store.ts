@@ -5,11 +5,12 @@ import {
 } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { CurriedGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
-import baseApi from './baseApi';
+import { authApi, baseApi } from './baseApi';
 import storeLogger from './logger';
+import { rtkQueryErrorLogger } from './errorHandler';
 
 const middlewareList = (getDefaultMiddleware: CurriedGetDefaultMiddleware) => {
-  const list = [baseApi.middleware];
+  const list = [rtkQueryErrorLogger, baseApi.middleware];
   if (process.env.NODE_ENV === 'development') {
     list.push(storeLogger);
   }
@@ -17,6 +18,7 @@ const middlewareList = (getDefaultMiddleware: CurriedGetDefaultMiddleware) => {
 };
 
 export const rootReducer = combineReducers({
+  [authApi.reducerPath]: authApi.reducer,
   [baseApi.reducerPath]: baseApi.reducer
 });
 
