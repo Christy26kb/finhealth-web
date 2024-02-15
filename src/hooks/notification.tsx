@@ -1,5 +1,5 @@
 import { notification } from 'antd';
-import { NotificationParams, NotifyParams } from './types';
+import { NotificationParams, NotifyParams } from '@types';
 
 const useNotify = () => {
   const [api] = notification.useNotification();
