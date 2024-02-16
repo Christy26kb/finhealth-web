@@ -6,6 +6,11 @@ export type LoginRequest = {
   password: Scalars['String'];
 };
 
+export type LoginResponse = {
+  accessToken: Scalars['String'];
+  refreshtTken: Scalars['String'];
+};
+
 export type SignupRequest = {
   email: Scalars['String'];
   password: Scalars['String'];

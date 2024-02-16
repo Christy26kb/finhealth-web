@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { ReactNode } from 'react';
 import { ConfigProvider, App } from 'antd';
 
 type AntdAppProviderProps = {
@@ -7,7 +6,11 @@ type AntdAppProviderProps = {
 };
 
 const AntdAppProvider = ({ children }: AntdAppProviderProps) => (
-  <ConfigProvider>
+  <ConfigProvider
+    theme={{
+      token: {}
+    }}
+  >
     <App>{children}</App>
   </ConfigProvider>
 );

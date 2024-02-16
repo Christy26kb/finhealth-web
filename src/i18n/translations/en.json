@@ -1,7 +1,7 @@
 {
   "authentication": {
     "login": {
-      "page_tab_title": "Vamos | Login",
+      "page_tab_title": "finhealth | Login",
       "title": "Login",
       "email": "Email ID",
       "forgotPassword": "Forgot Password?",
@@ -9,6 +9,15 @@
       "login_button": "Login",
       "password_error": "Please enter your password.",
       "email_error": "Please enter your email address."
-    }
+    },
+     "register": {
+      "passwordValidation": {
+        "title": "Password must contain :",
+        "minimumChar": "Minimum 6 characters",
+        "specialChar": "One special character",
+        "upperCaseChar": "One Uppercase character",
+        "lowerCaseChar": "One lowercase character"
+      }
+     }
   }
 }

@@ -7,12 +7,16 @@ import { HOME_PAGE } from '@constants/routes';
 const protectedRoutes: RouteObject[] = [
   AuthRoutes,
   {
-    path: '/',
-    element: <Navigate to={HOME_PAGE.HOME} /> // Re-route from '/' to '/home'
+    path: '/', // Re-route from '/' to '/home'
+    element: <Navigate to={HOME_PAGE.HOME} />
   },
   {
     element: <MainLayout />, // Outlet in MainLayout will be replaced by matching element from below
     children: []
+  },
+  {
+    path: '*', // Re-route '*' routes except above to '/home'
+    element: <Navigate to={HOME_PAGE.HOME} />
   }
 ];
 

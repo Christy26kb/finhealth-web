@@ -1,22 +1,27 @@
 import { isRejectedWithValue } from '@reduxjs/toolkit';
-import useNotify from '@hooks/notification';
+import { createNotifier } from '@features/components/notifications/notificationSlice';
+
 import { AUTH } from '@constants/routes';
 
 export const rtkQueryErrorLogger =
   (store: any) => (next: any) => (action: any) => {
     const ignore403EndpointList = ['login', 'register'];
     const status = action.payload?.status;
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { dispatch } = store;
-    const { createErrorNotifier } = useNotify();
     const result = next(action);
+    const errorMessage = action.payload?.data?.error?.error;
 
     if (isRejectedWithValue(action)) {
       switch (status) {
         case 'FETCH_ERROR':
-          createErrorNotifier({
-            message: 'Failed to fetch'
-          });
+          dispatch(
+            createNotifier({
+              notifier: {
+                type: 'error',
+                message: 'Failed to fetch'
+              }
+            })
+          );
           break;
         case 403:
           if (ignore403EndpointList.includes(action.meta.arg.endpointName)) {
@@ -26,17 +31,37 @@ export const rtkQueryErrorLogger =
           } else {
             window.location.href = AUTH.LOGIN;
           }
-          createErrorNotifier({
-            message: 'Unauthenticated'
-          });
+          dispatch(
+            createNotifier({
+              notifier: {
+                type: 'error',
+                message: 'Unauthenticated'
+              }
+            })
+          );
           break;
         case 401:
           if (ignore403EndpointList.includes(action.meta.arg.endpointName))
             break;
           window.location.href = AUTH.LOGIN;
-          createErrorNotifier({
-            message: 'Unauthenticated'
-          });
+          dispatch(
+            createNotifier({
+              notifier: {
+                type: 'error',
+                message: 'Unauthenticated'
+              }
+            })
+          );
+          break;
+        case 400:
+          dispatch(
+            createNotifier({
+              notifier: {
+                type: 'error',
+                message: errorMessage || 'Failed to fetch'
+              }
+            })
+          );
           break;
         default:
           break;

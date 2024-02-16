@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 
+import Notification from '@features/components/notifications/notification';
 import { store } from '../core/store';
 import LocaleProvider from './locale';
 import { ThemeProvider } from './theme';
@@ -18,6 +19,7 @@ const AppProvider = ({ children }: AppProviderProps) => (
       <HelmetProvider>
         <LocaleProvider>
           <AntdAppProvider>
+            <Notification />
             <Router>{children}</Router>
           </AntdAppProvider>
         </LocaleProvider>

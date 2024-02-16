@@ -1,11 +1,11 @@
 module.exports = {
   // Primary
-  primary: '#03603D',
+  primary: '#1677ff',
   primary90: '#1D7051',
   primary70: '#4F9078',
   primary50: '#81AF9E',
   primary30: '#B3CFC4',
-  primary10: '#E5EFEB',
+  primary10: '#d4eaf7',
   primary5: '#F9FFFC',
   // Primary Lite
   primaryLite: '#07EA97',
