@@ -7,7 +7,7 @@ import { LoginRequest } from '@types';
 import { Button, Form, Input, message } from 'antd';
 import { emailRegex } from '@constants/regexps';
 import { setToLocalStorage } from '@utils/generic-utils';
-import { HOME_PAGE } from '@constants/routes';
+import { AUTH, HOME_PAGE } from '@constants/routes';
 
 type FieldType = {
   email?: string;
@@ -20,16 +20,21 @@ const Login = () => {
   const [login, { isLoading }] = useLoginMutation();
 
   const onLogin = async (creds: LoginRequest) => {
-    const response = await login(creds);
+    const response: any = await login(creds);
+    const userVerifyError = response?.error?.data?.error.code;
     if ('data' in response) {
       setToLocalStorage('access_token', response.data.accessToken);
       navigate(HOME_PAGE.HOME);
     } else
       message.open({
         type: 'error',
-        content: 'Please enter a valid email and password!'
+        content: userVerifyError
+          ? translate('authentication.login.verify_email_error')
+          : translate('authentication.login.login_error')
       });
   };
+
+  const onSignupClick = () => navigate(AUTH.REGISTER);
 
   return (
     <div className="login-section w-full">
@@ -73,10 +78,16 @@ const Login = () => {
           <Button
             type="primary"
             htmlType="submit"
-            className="w-full bg-primary"
+            className="w-full bg-primary hover:bg-primary"
             loading={isLoading}
           >
             {translate('authentication.login.login_button')}
+          </Button>
+        </Form.Item>
+
+        <Form.Item wrapperCol={{ span: 16 }}>
+          <Button type="text" className="mt-10 w-full" onClick={onSignupClick}>
+            {translate('authentication.login.signup')}
           </Button>
         </Form.Item>
       </Form>

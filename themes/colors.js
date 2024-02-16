@@ -1,6 +1,6 @@
 module.exports = {
   // Primary
-  primary: '#1677ff',
+  primary: '#628aec',
   primary90: '#1D7051',
   primary70: '#4F9078',
   primary50: '#81AF9E',

@@ -8,11 +8,15 @@ const LoginPage = lazy(
   () => import('@features/authentication/pages/login/Login')
 );
 
+const SignupPage = lazy(
+  () => import('@features/authentication/pages/signup/Signup')
+);
+
 export const AuthRoutes: RouteObject = {
   element: <AuthLayout />, // Outlet in AuthLayout will be replaced by matching element from below
   children: [
-    { path: AUTH.REGISTER, element: <div>Register</div> },
-    { path: AUTH.LOGIN, element: <LoginPage /> }
+    { path: AUTH.LOGIN, element: <LoginPage /> },
+    { path: AUTH.REGISTER, element: <SignupPage /> }
   ]
 };
 
