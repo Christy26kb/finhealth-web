@@ -33,11 +33,9 @@ const Signup = () => {
   const onLoginClick = () => navigate(AUTH.LOGIN);
 
   return (
-    <div className="signup-section w-full">
+    <div className="signup-section w-[450px]">
       <Form
         name="signup"
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
         initialValues={{ remember: true }}
         onFinish={onSignup}
         autoComplete="on"
@@ -84,7 +82,7 @@ const Signup = () => {
           />
         </Form.Item>
 
-        <Form.Item wrapperCol={{ span: 16 }}>
+        <Form.Item>
           <Button
             type="primary"
             htmlType="submit"
@@ -95,7 +93,7 @@ const Signup = () => {
           </Button>
         </Form.Item>
 
-        <Form.Item wrapperCol={{ span: 16 }}>
+        <Form.Item>
           <Button type="text" className="mt-10 w-full" onClick={onLoginClick}>
             {translate('authentication.signup.back_to_login')}
           </Button>

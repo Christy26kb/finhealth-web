@@ -28,9 +28,9 @@ const AuthLayout = () => {
           <img src={AuthLayoutImage} alt="login-layout-pic" className="w-2/3" />
         </section>
         <section className="flex size-full items-center justify-center sm:w-2/3 md:w-1/2">
-          <div className="m-6 ml-20 flex size-full flex-col items-center justify-center">
+          <div className="m-6 flex size-full flex-col items-center justify-center">
             <div className="mb-20">
-              <img src={AppLogo} alt="app-logo-pic" className="w-1/3" />
+              <img src={AppLogo} alt="app-logo-pic" className="w-[250px]" />
             </div>
             <Outlet />
           </div>

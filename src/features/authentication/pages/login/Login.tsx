@@ -8,6 +8,7 @@ import { Button, Form, Input, message } from 'antd';
 import { emailRegex } from '@constants/regexps';
 import { setToLocalStorage } from '@utils/generic-utils';
 import { AUTH, HOME_PAGE } from '@constants/routes';
+import { getErrorKey } from '@utils/error-utils';
 
 type FieldType = {
   email?: string;
@@ -25,23 +26,21 @@ const Login = () => {
     if ('data' in response) {
       setToLocalStorage('access_token', response.data.accessToken);
       navigate(HOME_PAGE.HOME);
-    } else
+    } else if (userVerifyError) {
+      const errorKey = getErrorKey(userVerifyError);
       message.open({
         type: 'error',
-        content: userVerifyError
-          ? translate('authentication.login.verify_email_error')
-          : translate('authentication.login.login_error')
+        content: errorKey ? translate(errorKey) : userVerifyError
       });
+    }
   };
 
   const onSignupClick = () => navigate(AUTH.REGISTER);
 
   return (
-    <div className="login-section w-full">
+    <div className="login-section w-[450px]">
       <Form
         name="login"
-        wrapperCol={{ span: 16 }}
-        style={{ maxWidth: 600 }}
         initialValues={{ remember: true }}
         onFinish={onLogin}
         autoComplete="on"
@@ -74,7 +73,7 @@ const Login = () => {
           />
         </Form.Item>
 
-        <Form.Item wrapperCol={{ span: 16 }}>
+        <Form.Item>
           <Button
             type="primary"
             htmlType="submit"
@@ -85,7 +84,7 @@ const Login = () => {
           </Button>
         </Form.Item>
 
-        <Form.Item wrapperCol={{ span: 16 }}>
+        <Form.Item>
           <Button type="text" className="mt-10 w-full" onClick={onSignupClick}>
             {translate('authentication.login.signup')}
           </Button>
