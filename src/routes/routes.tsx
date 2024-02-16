@@ -1,8 +1,10 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 
-import AuthRoutes from '@features/authentication/routes';
 import MainLayout from '@layouts/main-layout/MainLayout';
 import { HOME_PAGE } from '@constants/routes';
+
+import AuthRoutes from '@features/authentication/routes';
+import HomeRoutes from '@features/home/routes';
 
 const protectedRoutes: RouteObject[] = [
   AuthRoutes,
@@ -12,7 +14,7 @@ const protectedRoutes: RouteObject[] = [
   },
   {
     element: <MainLayout />, // Outlet in MainLayout will be replaced by matching element from below
-    children: []
+    children: [...HomeRoutes]
   },
   {
     path: '*', // Re-route '*' routes except above to '/home'
