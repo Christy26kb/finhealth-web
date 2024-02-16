@@ -1,14 +1,13 @@
-import useNotify from '@hooks/notification';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 
 import { NotificationParams } from '@types';
+import { notification } from 'antd';
 import { selectNotifiers } from './notificationSlice';
 
 const Notification = () => {
   const notifiers = useSelector(selectNotifiers);
-  const { createComplexNotifier } = useNotify();
 
   useEffect(() => {
     if (notifiers.length > 0) {
@@ -16,9 +15,9 @@ const Notification = () => {
         key: nanoid(),
         ...notifiers[notifiers.length - 1]
       };
-      createComplexNotifier(notifierParams);
+      notification.open(notifierParams);
     }
-  }, [notifiers, createComplexNotifier]);
+  }, [notifiers]);
 
   return null;
 };

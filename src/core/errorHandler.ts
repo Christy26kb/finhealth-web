@@ -9,7 +9,6 @@ export const rtkQueryErrorLogger =
     const status = action.payload?.status;
     const { dispatch } = store;
     const result = next(action);
-    const errorMessage = action.payload?.data?.error?.error;
 
     if (isRejectedWithValue(action)) {
       switch (status) {
@@ -53,16 +52,8 @@ export const rtkQueryErrorLogger =
             })
           );
           break;
-        case 400:
-          dispatch(
-            createNotifier({
-              notifier: {
-                type: 'error',
-                message: errorMessage || 'Failed to fetch'
-              }
-            })
-          );
-          break;
+        // Note: BadRequest handling needs to be specific than a general one.
+        // case 400:
         default:
           break;
       }

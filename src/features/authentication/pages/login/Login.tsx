@@ -4,7 +4,7 @@ import useTranslate from '@hooks/intl';
 import { useLoginMutation } from '@features/authentication/queries/AuthQuery';
 import { LoginRequest } from '@types';
 
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message } from 'antd';
 import { emailRegex } from '@constants/regexps';
 import { setToLocalStorage } from '@utils/generic-utils';
 import { HOME_PAGE } from '@constants/routes';
@@ -24,7 +24,11 @@ const Login = () => {
     if ('data' in response) {
       setToLocalStorage('access_token', response.data.accessToken);
       navigate(HOME_PAGE.HOME);
-    }
+    } else
+      message.open({
+        type: 'error',
+        content: 'Please enter a valid email and password!'
+      });
   };
 
   return (
