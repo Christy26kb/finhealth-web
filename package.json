@@ -10,6 +10,10 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "test-staged": "lint-staged && yarn type-check",
+    "prisma-schema-sync": "curl -L https://raw.githubusercontent.com/Christy26kb/finhealth-server/development/prisma/schema.prisma -o ./src/prisma/schema.prisma",
+    "prisma-codegen": "npx @kalissaac/prisma-typegen ./src/prisma/types.ts ./src/prisma/schema.prisma --useType --generateInsertionTypes",
+    "prisma-types-format": "prettier src/prisma/types.ts --write",
+    "prisma-typesgen": "npm run prisma-schema-sync && npm run prisma-codegen && npm run prisma-types-format",
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
@@ -76,6 +80,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
+    "@kalissaac/prisma-typegen": "^0.0.7",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.59.11",
     "autoprefixer": "^10.4.14",

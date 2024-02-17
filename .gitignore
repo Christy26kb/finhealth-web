@@ -96,3 +96,6 @@ yarn-error.log*
 
 # Env
 .env
+
+# Prisma schema sync for Ts types generations
+/src/prisma/schema.prisma
