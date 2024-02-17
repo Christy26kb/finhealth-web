@@ -1,7 +1,7 @@
 import { isRejectedWithValue } from '@reduxjs/toolkit';
 import { createNotifier } from '@features/components/notifications/notificationSlice';
 
-import { AUTH } from '@constants/routes';
+import { ACCESS_DENIED, AUTH } from '@constants/routes';
 
 export const rtkQueryErrorLogger =
   (store: any) => (next: any) => (action: any) => {
@@ -25,7 +25,8 @@ export const rtkQueryErrorLogger =
         case 403:
           if (ignore403EndpointList.includes(action.meta.arg.endpointName)) {
             break;
-          } else if (action.payload?.data?.errorCode === 'ACCESS_DENIED') {
+          } else if (action.payload?.data?.error?.error === 'Forbidden') {
+            window.location.href = ACCESS_DENIED;
             break;
           } else {
             window.location.href = AUTH.LOGIN;

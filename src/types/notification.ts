@@ -1,3 +1,4 @@
+import { Scalars } from '@types';
 import { NotificationPlacement } from 'antd/es/notification/interface';
 import { ReactNode } from 'react';
 
@@ -7,23 +8,23 @@ import { ReactNode } from 'react';
 export type NotificationType = 'success' | 'info' | 'warning' | 'error';
 
 export type NotificationParams = {
-  key?: string;
+  key?: Scalars['String'];
   type: NotificationType;
-  message: string;
-  description?: string;
-  duration?: number;
+  message: Scalars['String'];
+  description?: Scalars['String'];
+  duration?: Scalars['Int'];
   placement?: NotificationPlacement;
   icon?: ReactNode;
   style?: object;
-  className?: string;
-  threshold?: number;
+  className?: Scalars['String'];
+  threshold?: Scalars['Int'];
   stack?: boolean;
   btn?: ReactNode;
 };
 
 export type NotifyParams = {
-  key?: string;
-  message: string;
-  description?: string;
+  key?: Scalars['String'];
+  message: Scalars['String'];
+  description?: Scalars['String'];
   btn?: ReactNode;
 };

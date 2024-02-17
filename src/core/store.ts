@@ -5,7 +5,7 @@ import {
 } from '@reduxjs/toolkit';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import { CurriedGetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
-import { notificationSlice } from '@features/components/notifications/notificationSlice';
+import featuresReducers from '@core/reducers';
 import { authApi, baseApi } from './baseApi';
 import storeLogger from './logger';
 import { rtkQueryErrorLogger } from './errorHandler';
@@ -21,7 +21,7 @@ const middlewareList = (getDefaultMiddleware: CurriedGetDefaultMiddleware) => {
 export const rootReducer = combineReducers({
   [authApi.reducerPath]: authApi.reducer,
   [baseApi.reducerPath]: baseApi.reducer,
-  notifications: notificationSlice.reducer
+  ...featuresReducers
 });
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) =>

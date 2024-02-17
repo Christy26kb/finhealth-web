@@ -1,10 +1,11 @@
 import { Navigate, RouteObject } from 'react-router-dom';
 
 import MainLayout from '@layouts/main-layout/MainLayout';
-import { HOME_PAGE } from '@constants/routes';
+import { HOME_PAGE, ACCESS_DENIED } from '@constants/routes';
 
 import AuthRoutes from '@features/authentication/routes';
 import HomeRoutes from '@features/home/routes';
+import AccessDenied from '@components/access-denied/AccessDenied';
 
 const protectedRoutes: RouteObject[] = [
   AuthRoutes,
@@ -14,7 +15,13 @@ const protectedRoutes: RouteObject[] = [
   },
   {
     element: <MainLayout />, // Outlet in MainLayout will be replaced by matching element from below
-    children: [...HomeRoutes]
+    children: [
+      {
+        path: ACCESS_DENIED,
+        element: <AccessDenied />
+      },
+      ...HomeRoutes
+    ]
   },
   {
     path: '*', // Re-route '*' routes except above to '/home'

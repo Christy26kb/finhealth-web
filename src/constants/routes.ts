@@ -7,4 +7,4 @@ export const HOME_PAGE = {
   HOME: '/home'
 };
 
-export const ACCESS_DENIED = '/accessDenied';
+export const ACCESS_DENIED = '/access-denied';
