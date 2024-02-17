@@ -10,7 +10,7 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
     "test-staged": "lint-staged && yarn type-check",
-    "prisma-schema-sync": "curl -L https://raw.githubusercontent.com/Christy26kb/finhealth-server/development/prisma/schema.prisma -o ./src/prisma/schema.prisma",
+    "prisma-schema-sync": "./sync-schema.sh",
     "prisma-codegen": "npx @kalissaac/prisma-typegen ./src/prisma/types.ts ./src/prisma/schema.prisma --useType --generateInsertionTypes",
     "prisma-types-format": "prettier src/prisma/types.ts --write",
     "prisma-typesgen": "npm run prisma-schema-sync && npm run prisma-codegen && npm run prisma-types-format",

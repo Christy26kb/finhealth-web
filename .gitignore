@@ -99,3 +99,4 @@ yarn-error.log*
 
 # Prisma schema sync for Ts types generations
 /src/prisma/schema.prisma
+sync-schema.sh
