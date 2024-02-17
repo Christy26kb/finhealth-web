@@ -11,9 +11,10 @@
     "test": "react-app-rewired test",
     "test-staged": "lint-staged && yarn type-check",
     "prisma-schema-sync": "./sync-schema.sh",
-    "prisma-codegen": "npx @kalissaac/prisma-typegen ./src/prisma/types.ts ./src/prisma/schema.prisma --useType --generateInsertionTypes",
-    "prisma-types-format": "prettier src/prisma/types.ts --write",
-    "prisma-typesgen": "npm run prisma-schema-sync && npm run prisma-codegen && npm run prisma-types-format",
+    "prisma-codegen-declaration": "npx @kalissaac/prisma-typegen ./src/prisma/declarations.d.ts ./src/prisma/schema.prisma --useType",
+    "prisma-codegen-insertion": "npx @kalissaac/prisma-typegen ./src/prisma/insertions.d.ts ./src/prisma/schema.prisma --useType --generateInsertionTypes",
+    "prisma-types-format": "prettier src/prisma/declarations.d.ts --write && prettier src/prisma/insertions.d.ts --write",
+    "prisma-types-gen": "npm run prisma-schema-sync && npm run prisma-codegen-declaration && npm run prisma-codegen-insertion && npm run prisma-types-format",
     "eject": "react-scripts eject",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src",
@@ -23,6 +24,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.3.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",

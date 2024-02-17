@@ -25,6 +25,7 @@ const Login = () => {
     const userVerifyError = response?.error?.data?.error.code;
     if ('data' in response) {
       setToLocalStorage('access_token', response.data.accessToken);
+      setToLocalStorage('refresh_token', response.data.refreshToken);
       navigate(HOME_PAGE.HOME);
     } else if (userVerifyError) {
       const errorKey = getErrorKey(userVerifyError);
