@@ -7,7 +7,7 @@ import { LoginRequest } from '@types';
 import { Button, Form, Input, message } from 'antd';
 import { emailRegex } from '@constants/regexps';
 import { setToLocalStorage } from '@utils/generic-utils';
-import { AUTH, HOME_PAGE } from '@constants/routes';
+import { AUTH, HOME } from '@constants/routes';
 import { getErrorKey } from '@utils/error-utils';
 
 type FieldType = {
@@ -26,7 +26,7 @@ const Login = () => {
     if ('data' in response) {
       setToLocalStorage('access_token', response.data.accessToken);
       setToLocalStorage('refresh_token', response.data.refreshToken);
-      navigate(HOME_PAGE.HOME);
+      navigate(HOME.HOME);
     } else if (userVerifyError) {
       const errorKey = getErrorKey(userVerifyError);
       message.open({

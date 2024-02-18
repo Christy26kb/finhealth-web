@@ -44,5 +44,6 @@ module.exports = {
   error10: '#FBEBEB',
   warning10: '#FFEEE8',
   success10: '#E9F9F1',
-  success20: '#FEFBD7'
+  success20: '#FEFBD7',
+  boderGrey: '#f0f0f0'
 };

@@ -29,3 +29,4 @@ export type ValidationError = {
 export * from './requests';
 export * from './notification';
 export * from './user';
+export * from './sidenav';

@@ -33,6 +33,37 @@
         "upperCaseChar": "One Uppercase character",
         "lowerCaseChar": "One lowercase character"
       }
-     }
+    }
+  },
+  "sideNav": {
+    "home": {
+      "title": "Home"
+    },
+    "profiles": {
+      "title": "Profile Management"
+    },
+    "finance_management": {
+      "title": "Finance Management",
+      "menu_items": {
+        "debts": {
+          "title": "Debts"
+        },
+        "lends": {
+          "title": "Lends"
+        },
+        "incomes": {
+          "title": "Incomes"
+        },
+        "expenses": {
+          "title": "Expenses"
+        },
+        "investments": {
+          "title": "Investments"
+        },
+        "subscriptions": {
+          "title": "Subscriptons"
+        }
+      } 
+    }
   }
 }
