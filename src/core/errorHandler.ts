@@ -2,6 +2,7 @@ import { isRejectedWithValue } from '@reduxjs/toolkit';
 import { createNotifier } from '@features/components/notifications/notificationSlice';
 
 import { ACCESS_DENIED, AUTH } from '@constants/routes';
+import { onRefreshTokenFailed } from '@features/authentication/utils/utils';
 
 export const rtkQueryErrorLogger =
   (store: any) => (next: any) => (action: any) => {
@@ -43,7 +44,7 @@ export const rtkQueryErrorLogger =
         case 401:
           if (ignore403EndpointList.includes(action.meta.arg.endpointName))
             break;
-          window.location.href = AUTH.LOGIN;
+          onRefreshTokenFailed();
           dispatch(
             createNotifier({
               notifier: {

@@ -9,6 +9,8 @@ import {
 } from '@ant-design/icons';
 import AppLogo from '@assets/logo/finhealth_full_logo.png';
 import { SideNavItem } from '@types';
+import { removeFromLocalStorage } from '@utils/generic-utils';
+import { AUTH } from '@constants/routes';
 import {
   SideNavItems,
   MoreActionsMenuItems,
@@ -42,6 +44,16 @@ const SideNavBar = () => {
       SideNavItems
     );
     if (navItem?.path) navigate(navItem.path);
+  };
+
+  const onLogout = () => {
+    removeFromLocalStorage('refresh_token');
+    removeFromLocalStorage('access_token');
+    navigate(AUTH.LOGIN);
+  };
+
+  const onClickMoreActionItem = (actionItem: any) => {
+    if (actionItem.key === 'logout') onLogout();
   };
 
   const sideBarActionItems = [
@@ -79,7 +91,7 @@ const SideNavBar = () => {
     </Dropdown>,
     <Dropdown
       key="more-actions"
-      menu={{ items: moreActionsMenuItems }}
+      menu={{ items: moreActionsMenuItems, onClick: onClickMoreActionItem }}
       trigger={['click']}
       overlayStyle={{ minWidth: 150 }}
       placement="bottom"

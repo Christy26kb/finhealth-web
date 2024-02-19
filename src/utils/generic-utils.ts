@@ -4,3 +4,8 @@ export const getFromLocalStorage = (key: string): string | null =>
 
 export const setToLocalStorage = (key: string, value: string): void =>
   localStorage.setItem(key, value);
+
+export const removeFromLocalStorage = (key: string): void =>
+  localStorage.removeItem(key);
+
+export const clearAllFromLocalStorage = (): void => localStorage.clear();

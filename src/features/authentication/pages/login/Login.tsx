@@ -4,7 +4,7 @@ import useTranslate from '@hooks/intl';
 import { useLoginMutation } from '@features/authentication/queries/AuthQuery';
 import { LoginRequest } from '@types';
 
-import { Button, Form, Input, message } from 'antd';
+import { Button, Form, Input, message, Divider } from 'antd';
 import { emailRegex } from '@constants/regexps';
 import { setToLocalStorage } from '@utils/generic-utils';
 import { AUTH, HOME } from '@constants/routes';
@@ -85,8 +85,10 @@ const Login = () => {
           </Button>
         </Form.Item>
 
+        <Divider plain>or</Divider>
+
         <Form.Item>
-          <Button type="text" className="mt-10 w-full" onClick={onSignupClick}>
+          <Button type="text" className="mt-2 w-full" onClick={onSignupClick}>
             {translate('authentication.login.signup')}
           </Button>
         </Form.Item>

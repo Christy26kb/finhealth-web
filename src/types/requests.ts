@@ -8,11 +8,21 @@ export type LoginRequest = {
 
 export type LoginResponse = {
   accessToken: Scalars['String'];
-  refreshtTken: Scalars['String'];
+  refreshToken: Scalars['String'];
 };
 
 export type SignupRequest = {
   email: Scalars['String'];
   password: Scalars['String'];
   name: Scalars['String'];
+};
+
+export type RefreshTokenRequest = {
+  accessToken: Scalars['String'];
+  refreshToken: Scalars['String'];
+};
+
+export type RefreshTokenResponse = {
+  accessToken: Scalars['String'];
+  refreshToken: Scalars['String'];
 };
