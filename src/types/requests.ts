@@ -25,4 +25,5 @@ export type RefreshTokenRequest = {
 export type RefreshTokenResponse = {
   accessToken: Scalars['String'];
   refreshToken: Scalars['String'];
+  idToken: Scalars['String'];
 };
