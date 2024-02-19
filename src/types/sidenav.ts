@@ -7,4 +7,10 @@ export type SideNavItem = {
   icon?: string | ReactNode;
   permissions?: string[];
   childPaths?: SideNavItem[];
+  showSubMenuItems?: boolean;
+};
+
+export type ActiveNavItem = {
+  subItem: SideNavItem | null;
+  parentItem: SideNavItem | null;
 };

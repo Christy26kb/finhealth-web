@@ -5,6 +5,9 @@ import { HOME, ACCESS_DENIED } from '@constants/routes';
 
 import AuthRoutes from '@features/authentication/routes';
 import HomeRoutes from '@features/home/routes';
+import ProfileRoutes from '@features/profiles/routes';
+import IncomeRoutes from '@features/incomes/routes';
+
 import AccessDenied from '@components/access-denied/AccessDenied';
 
 const protectedRoutes: RouteObject[] = [
@@ -20,7 +23,9 @@ const protectedRoutes: RouteObject[] = [
         path: ACCESS_DENIED,
         element: <AccessDenied />
       },
-      ...HomeRoutes
+      ...HomeRoutes,
+      ProfileRoutes,
+      IncomeRoutes
     ]
   },
   {

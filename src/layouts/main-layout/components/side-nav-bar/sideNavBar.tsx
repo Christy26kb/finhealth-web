@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Layout, Menu, Card, Button, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
 import {
@@ -6,10 +8,13 @@ import {
   SettingOutlined
 } from '@ant-design/icons';
 import AppLogo from '@assets/logo/finhealth_full_logo.png';
+import { SideNavItem } from '@types';
 import {
   SideNavItems,
   MoreActionsMenuItems,
-  useMapSideNavConfigToMenuItems
+  useMapSideNavConfigToMenuItems,
+  getActiveMenuItem,
+  getNavItemById
 } from './sideBarConfig';
 
 const { Sider } = Layout;
@@ -17,8 +22,27 @@ const { Sider } = Layout;
 const moreActionsMenuItems: MenuProps['items'] = [...MoreActionsMenuItems];
 
 const SideNavBar = () => {
+  const { pathname: currentPath } = useLocation();
+  const navigate = useNavigate();
+
   const sideMenuItems = useMapSideNavConfigToMenuItems(SideNavItems);
   const profilesActionMenuItems: MenuProps['items'] = [];
+  const activeMenuItem = useMemo(
+    () => getActiveMenuItem(currentPath, SideNavItems),
+    [currentPath]
+  );
+  // Note: If there is subItem it means a child is active else the parent.
+  const selectedMenuItemKey = [
+    activeMenuItem.subItem?.id || activeMenuItem.parentItem?.id || ''
+  ];
+
+  const handleNavigate = (menuItemInfo: any) => {
+    const navItem: SideNavItem | null = getNavItemById(
+      menuItemInfo.key,
+      SideNavItems
+    );
+    if (navItem?.path) navigate(navItem.path);
+  };
 
   const sideBarActionItems = [
     <Button
@@ -88,14 +112,14 @@ const SideNavBar = () => {
       </Card>
       <Menu
         mode="inline"
-        defaultSelectedKeys={['1']}
-        defaultOpenKeys={['sub1']}
+        selectedKeys={selectedMenuItemKey}
         style={{
           height: 'calc(100% - 345px)',
           borderRight: 0,
           overflow: 'auto'
         }}
         items={sideMenuItems}
+        onClick={handleNavigate}
       />
     </Sider>
   );
