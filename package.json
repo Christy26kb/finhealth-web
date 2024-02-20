@@ -126,7 +126,8 @@
       "@hooks(.*)$": "<rootDir>/src/hooks/$1",
       "@mocks(.*)$": "<rootDir>/src/mocks/$1",
       "@types(.*)$": "<rootDir>/src/types/$1",
-      "@i18n(.*)$": "<rootDir>/src/i18n/$1"
+      "@i18n(.*)$": "<rootDir>/src/i18n/$1",
+      "@slices(.*)$": "<rootDir>/src/slices/$1"
     }
   }
 }

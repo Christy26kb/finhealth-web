@@ -1,5 +1,3 @@
-import { Scalars } from '@types';
+import { Users } from '../prisma/declarations';
 
-export type User = {
-  name: Scalars['String'];
-};
+export type User = Users;

@@ -52,7 +52,8 @@ module.exports = function override(config) {
       '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@mocks': path.resolve(__dirname, 'src/mocks'),
       '@types': path.resolve(__dirname, 'src/types'),
-      '@i18n': path.resolve(__dirname, 'src/i18n')
+      '@i18n': path.resolve(__dirname, 'src/i18n'),
+      '@slices': path.resolve(__dirname, 'src/slices')
     },
     // Added below change to allow importing files from outside src folder
     // Ref: https://stackoverflow.com/questions/44114436/the-create-react-app-imports-restriction-outside-of-src-directory

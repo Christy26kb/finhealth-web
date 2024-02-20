@@ -1,7 +1,7 @@
 import { notificationSlice } from '@features/components/notifications/notificationSlice';
-import { homeSlice } from '@features/home/slices/homeSlice';
+import { appSlice } from '@slices/appSlice';
 
 export default {
-  notifications: notificationSlice.reducer,
-  home: homeSlice.reducer
+  app: appSlice.reducer,
+  notifications: notificationSlice.reducer
 };

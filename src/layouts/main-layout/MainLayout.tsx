@@ -1,8 +1,11 @@
 import { Suspense, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Spin, Layout } from 'antd';
 import { AUTH } from '@constants/routes';
 import { getAccessToken } from '@features/authentication/utils/utils';
+import { useLazyGetCurrentUserQuery } from '@features/users/queries/UsersQuery';
+import { setCurrentUser } from '@slices/appSlice';
 import BreadCrumbs from './components/breadcrumbs/Breadcrumbs';
 import SideNavBar from './components/side-nav-bar/sideNavBar';
 
@@ -10,6 +13,24 @@ const { Content } = Layout;
 
 const MainLayout = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [getCurrentUser] = useLazyGetCurrentUserQuery();
+
+  const initiateCurrentUser = async () => {
+    const response = await getCurrentUser();
+    if (response.data)
+      dispatch(
+        setCurrentUser({
+          user: response.data
+        })
+      );
+  };
+
+  useEffect(() => {
+    initiateCurrentUser();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const accessToken = getAccessToken();
