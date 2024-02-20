@@ -1,14 +1,7 @@
 import { isRejectedWithValue } from '@reduxjs/toolkit';
 import { createNotifier } from '@features/components/notifications/notificationSlice';
 
-import { ACCESS_DENIED, AUTH } from '@constants/routes';
-import {
-  getNewTokens,
-  getRefreshToken,
-  onRefreshTokenFailed,
-  onRefreshTokenSuccess
-} from '@features/authentication/utils/utils';
-import { RefreshTokenResponse } from '@types';
+import { ACCESS_DENIED } from '@constants/routes';
 
 export const rtkQueryErrorLogger =
   (store: any) => (next: any) => (action: any) => {
@@ -16,27 +9,6 @@ export const rtkQueryErrorLogger =
     const status = action.payload?.status;
     const { dispatch } = store;
     const result = next(action);
-
-    const handleRefreshToken = async () => {
-      const refreshToken = getRefreshToken();
-      if (refreshToken) {
-        const response: RefreshTokenResponse = await getNewTokens(refreshToken);
-        if (response?.accessToken && response?.refreshToken) {
-          onRefreshTokenSuccess(response);
-          // TODO: Need to resume the failed api with updated tokens
-        } else {
-          onRefreshTokenFailed();
-          dispatch(
-            createNotifier({
-              notifier: {
-                type: 'error',
-                message: 'Unauthenticated'
-              }
-            })
-          );
-        }
-      }
-    };
 
     if (isRejectedWithValue(action)) {
       switch (status) {
@@ -57,26 +29,17 @@ export const rtkQueryErrorLogger =
             window.location.href = ACCESS_DENIED;
             break;
           } else {
-            window.location.href = AUTH.LOGIN;
+            window.location.href = ACCESS_DENIED;
           }
           dispatch(
             createNotifier({
               notifier: {
                 type: 'error',
-                message: 'Unauthenticated'
+                message: 'Access Denied'
               }
             })
           );
           break;
-        case 401:
-          if (ignore403EndpointList.includes(action.meta.arg.endpointName))
-            break;
-          // TODO: Only attempt to refresh token for the original API call
-          // not for refreshing token itself
-          handleRefreshToken();
-          break;
-        // Note: BadRequest handling needs to be specific than a general one.
-        // case 400:
         default:
           break;
       }
