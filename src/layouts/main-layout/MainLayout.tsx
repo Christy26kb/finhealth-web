@@ -8,6 +8,7 @@ import { useLazyGetCurrentUserQuery } from '@features/users/queries/UsersQuery';
 import { setCurrentUser } from '@slices/appSlice';
 import BreadCrumbs from './components/breadcrumbs/Breadcrumbs';
 import SideNavBar from './components/side-nav-bar/sideNavBar';
+import MainHeader from './components/main-header/MainHeader';
 
 const { Content } = Layout;
 
@@ -40,19 +41,22 @@ const MainLayout = () => {
   return (
     <Layout className="flex size-full h-screen w-screen overflow-hidden">
       <SideNavBar />
-      <Layout style={{ padding: '0 24px 24px' }}>
-        <BreadCrumbs />
-        <Content>
-          <Suspense
-            fallback={
-              <div className="flex size-full items-center justify-center">
-                <Spin />
-              </div>
-            }
-          >
-            <Outlet />
-          </Suspense>
-        </Content>
+      <Layout>
+        <MainHeader />
+        <Layout style={{ padding: '0 24px 24px' }}>
+          <BreadCrumbs />
+          <Content>
+            <Suspense
+              fallback={
+                <div className="flex size-full items-center justify-center">
+                  <Spin />
+                </div>
+              }
+            >
+              <Outlet />
+            </Suspense>
+          </Content>
+        </Layout>
       </Layout>
     </Layout>
   );

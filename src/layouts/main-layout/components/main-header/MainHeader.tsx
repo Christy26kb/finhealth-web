@@ -8,7 +8,8 @@ const MainHeader = () => (
       display: 'flex',
       alignItems: 'center',
       background: 'white',
-      borderBottom: '1px solid #f0f0f0'
+      borderBottom: '1px solid #f0f0f0',
+      height: 65
     }}
   >
     {/* <img src={AppLogo} alt="app-logo-pic" className="w-[250px]" /> */}
