@@ -4,10 +4,10 @@ import { createNotifier } from '@features/components/notifications/notificationS
 import { ACCESS_DENIED, AUTH } from '@constants/routes';
 import {
   getNewTokens,
+  getRefreshToken,
   onRefreshTokenFailed,
   onRefreshTokenSuccess
 } from '@features/authentication/utils/utils';
-import { getFromLocalStorage } from '@utils/generic-utils';
 import { RefreshTokenResponse } from '@types';
 
 export const rtkQueryErrorLogger =
@@ -18,7 +18,7 @@ export const rtkQueryErrorLogger =
     const result = next(action);
 
     const handleRefreshToken = async () => {
-      const refreshToken = getFromLocalStorage('refresh_token');
+      const refreshToken = getRefreshToken();
       if (refreshToken) {
         const response: RefreshTokenResponse = await getNewTokens(refreshToken);
         if (response?.accessToken && response?.refreshToken) {
