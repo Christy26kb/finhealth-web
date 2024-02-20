@@ -18,15 +18,11 @@ const protectedRoutes: RouteObject[] = [
   },
   {
     element: <MainLayout />, // Outlet in MainLayout will be replaced by matching element from below
-    children: [
-      {
-        path: ACCESS_DENIED,
-        element: <AccessDenied />
-      },
-      ...HomeRoutes,
-      ProfileRoutes,
-      IncomeRoutes
-    ]
+    children: [...HomeRoutes, ProfileRoutes, IncomeRoutes]
+  },
+  {
+    path: ACCESS_DENIED,
+    element: <AccessDenied />
   },
   {
     path: '*', // Re-route '*' routes except above to '/home'

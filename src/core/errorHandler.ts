@@ -28,17 +28,7 @@ export const rtkQueryErrorLogger =
           } else if (action.payload?.data?.error?.error === 'Forbidden') {
             window.location.href = ACCESS_DENIED;
             break;
-          } else {
-            window.location.href = ACCESS_DENIED;
           }
-          dispatch(
-            createNotifier({
-              notifier: {
-                type: 'error',
-                message: 'Access Denied'
-              }
-            })
-          );
           break;
         default:
           break;
