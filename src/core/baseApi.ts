@@ -6,7 +6,7 @@ import {
 import { BaseQueryApi } from '@reduxjs/toolkit/dist/query/baseQueryTypes';
 
 import { API_URL } from '@config';
-import { getFromLocalStorage } from '@utils/generic-utils';
+import { getAccessToken } from '@features/authentication/utils/utils';
 
 // Auth Api Definitions
 const fetchAuthQ = fetchBaseQuery({
@@ -38,7 +38,7 @@ export const authApi = createApi({
 const fetchBaseQ = fetchBaseQuery({
   baseUrl: API_URL,
   prepareHeaders(headers) {
-    const accessToken = getFromLocalStorage('access_token');
+    const accessToken = getAccessToken();
     if (accessToken) headers.set('Authorization', `Bearer ${accessToken}`);
     return headers;
   },

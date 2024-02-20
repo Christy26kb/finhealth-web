@@ -4,15 +4,15 @@ import { Spin } from 'antd';
 
 import AppLogo from '@assets/logo/finhealth_full_logo.png';
 import AuthLayoutImage from '@assets/images/auth_layout.svg';
-import { getFromLocalStorage } from '@utils/generic-utils';
 import { HOME } from '@constants/routes';
+import { getAccessToken } from '@features/authentication/utils/utils';
 
 const AuthLayout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     // Redirect users to Home page if already logged-in.
-    if (getFromLocalStorage('access_token')) navigate(HOME.HOME);
+    if (getAccessToken()) navigate(HOME.HOME);
   }, [navigate]);
 
   return (

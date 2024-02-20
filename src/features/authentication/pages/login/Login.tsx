@@ -6,9 +6,12 @@ import { LoginRequest } from '@types';
 
 import { Button, Form, Input, message, Divider } from 'antd';
 import { emailRegex } from '@constants/regexps';
-import { setToLocalStorage } from '@utils/generic-utils';
 import { AUTH, HOME } from '@constants/routes';
 import { getErrorKey } from '@utils/error-utils';
+import {
+  setAccessToken,
+  setRefreshToken
+} from '@features/authentication/utils/utils';
 
 type FieldType = {
   email?: string;
@@ -24,8 +27,8 @@ const Login = () => {
     const response: any = await login(creds);
     const userVerifyError = response?.error?.data?.error.code;
     if ('data' in response) {
-      setToLocalStorage('access_token', response.data.accessToken);
-      setToLocalStorage('refresh_token', response.data.refreshToken);
+      setAccessToken(response.data.accessToken);
+      setRefreshToken(response.data.refreshToken);
       navigate(HOME.HOME);
     } else if (userVerifyError) {
       const errorKey = getErrorKey(userVerifyError);

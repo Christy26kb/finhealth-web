@@ -1,8 +1,8 @@
 import { Suspense, useEffect } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { Spin, Layout } from 'antd';
-import { getFromLocalStorage } from '@utils/generic-utils';
 import { AUTH } from '@constants/routes';
+import { getAccessToken } from '@features/authentication/utils/utils';
 import BreadCrumbs from './components/breadcrumbs/Breadcrumbs';
 import SideNavBar from './components/side-nav-bar/sideNavBar';
 
@@ -12,7 +12,7 @@ const MainLayout = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const accessToken = getFromLocalStorage('access_token');
+    const accessToken = getAccessToken();
     if (!accessToken) navigate(AUTH.LOGIN);
   }, [navigate]);
 

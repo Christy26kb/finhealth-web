@@ -9,8 +9,11 @@ import {
 } from '@ant-design/icons';
 import AppLogo from '@assets/logo/finhealth_full_logo.png';
 import { SideNavItem } from '@types';
-import { removeFromLocalStorage } from '@utils/generic-utils';
 import { AUTH } from '@constants/routes';
+import {
+  removeAccessToken,
+  removeRefreshToken
+} from '@features/authentication/utils/utils';
 import {
   SideNavItems,
   MoreActionsMenuItems,
@@ -47,8 +50,8 @@ const SideNavBar = () => {
   };
 
   const onLogout = () => {
-    removeFromLocalStorage('refresh_token');
-    removeFromLocalStorage('access_token');
+    removeRefreshToken();
+    removeAccessToken();
     navigate(AUTH.LOGIN);
   };
 

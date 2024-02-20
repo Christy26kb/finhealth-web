@@ -18,3 +18,8 @@ export type ApiError = {
     };
   }[];
 };
+
+export enum TokenKeys {
+  ACCESS_TOKEN = 'access_token',
+  RFERESH_TOKEN = 'refresh_token'
+}
