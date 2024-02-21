@@ -65,5 +65,10 @@
         }
       } 
     }
+  },
+  "sideDrawer": {
+    "footer": {
+      "logout": "Logout"
+    }
   }
 }

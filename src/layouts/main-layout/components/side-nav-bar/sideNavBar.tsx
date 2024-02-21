@@ -2,29 +2,18 @@ import { useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Layout, Menu, Button, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
-import {
-  UserSwitchOutlined,
-  EllipsisOutlined,
-  SettingOutlined
-} from '@ant-design/icons';
+import { UserSwitchOutlined, SettingOutlined } from '@ant-design/icons';
 import AppLogoIcon from '@assets/logo/finhealth_full_logo_filled.png';
 import { SideNavItem } from '@types';
-import { AUTH, HOME } from '@constants/routes';
-import {
-  removeAccessToken,
-  removeRefreshToken
-} from '@features/authentication/utils/utils';
+import { HOME } from '@constants/routes';
 import {
   SideNavItems,
-  MoreActionsMenuItems,
   useMapSideNavConfigToMenuItems,
   getActiveMenuItem,
   getNavItemById
 } from './sideBarConfig';
 
 const { Sider } = Layout;
-
-const moreActionsMenuItems: MenuProps['items'] = [...MoreActionsMenuItems];
 
 const SideNavBar = () => {
   const { pathname: currentPath } = useLocation();
@@ -49,17 +38,7 @@ const SideNavBar = () => {
     if (navItem?.path) navigate(navItem.path);
   };
 
-  const onLogout = () => {
-    removeRefreshToken();
-    removeAccessToken();
-    navigate(AUTH.LOGIN);
-  };
-
   const onAppLogoClick = () => navigate(HOME.HOME);
-
-  const onClickMoreActionItem = (actionItem: any) => {
-    if (actionItem.key === 'logout') onLogout();
-  };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const sideBarActionItems = [
@@ -93,24 +72,6 @@ const SideNavBar = () => {
         size="small"
       >
         Profiles
-      </Button>
-    </Dropdown>,
-    <Dropdown
-      key="more-actions"
-      menu={{ items: moreActionsMenuItems, onClick: onClickMoreActionItem }}
-      trigger={['click']}
-      overlayStyle={{ minWidth: 150 }}
-      placement="bottom"
-      arrow
-    >
-      <Button
-        type="default"
-        shape="round"
-        icon={<EllipsisOutlined />}
-        style={{ padding: 2, border: 'none', boxShadow: 'none' }}
-        size="small"
-      >
-        More
       </Button>
     </Dropdown>
   ];
