@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
 import type { PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '@core/store';
 import { User } from '@types';
 
 const initialState = {
-  currentUser: {}
+  currentUser: {} as User
 };
 
 export type UserState = {
@@ -25,3 +26,4 @@ export const appSlice = createSlice({
 });
 export const { setCurrentUser } = appSlice.actions;
 export default appSlice.reducer;
+export const selectAppState = (state: RootState) => state.app;

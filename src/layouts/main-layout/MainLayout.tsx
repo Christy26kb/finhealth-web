@@ -6,7 +6,6 @@ import { AUTH } from '@constants/routes';
 import { getAccessToken } from '@features/authentication/utils/utils';
 import { useLazyGetCurrentUserQuery } from '@features/users/queries/UsersQuery';
 import { setCurrentUser } from '@slices/appSlice';
-import BreadCrumbs from './components/breadcrumbs/Breadcrumbs';
 import SideNavBar from './components/side-nav-bar/sideNavBar';
 import MainHeader from './components/main-header/MainHeader';
 
@@ -44,7 +43,6 @@ const MainLayout = () => {
       <Layout>
         <MainHeader />
         <Layout style={{ padding: '0 24px 24px' }}>
-          <BreadCrumbs />
           <Content>
             <Suspense
               fallback={

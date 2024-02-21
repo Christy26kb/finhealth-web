@@ -67,6 +67,9 @@
     }
   },
   "sideDrawer": {
+    "center": {
+      "settings": "Settings"
+    },
     "footer": {
       "logout": "Logout"
     }

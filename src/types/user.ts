@@ -1,3 +1,6 @@
 import { Users } from '../prisma/declarations';
 
-export type User = Users;
+type User = Users;
+
+// eslint-disable-next-line import/prefer-default-export
+export type { User };
