@@ -1,15 +1,15 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Layout, Menu, Card, Button, Dropdown } from 'antd';
+import { Layout, Menu, Button, Dropdown } from 'antd';
 import type { MenuProps } from 'antd';
 import {
   UserSwitchOutlined,
   EllipsisOutlined,
   SettingOutlined
 } from '@ant-design/icons';
-import AppLogoText from '@assets/logo/finhealth_full_text_colored.png';
+import AppLogoIcon from '@assets/logo/finhealth_full_logo_filled.png';
 import { SideNavItem } from '@types';
-import { AUTH } from '@constants/routes';
+import { AUTH, HOME } from '@constants/routes';
 import {
   removeAccessToken,
   removeRefreshToken
@@ -29,7 +29,6 @@ const moreActionsMenuItems: MenuProps['items'] = [...MoreActionsMenuItems];
 const SideNavBar = () => {
   const { pathname: currentPath } = useLocation();
   const navigate = useNavigate();
-  const [isSideMenuCollapsed, setSideMenuCollapsed] = useState(false);
 
   const sideMenuItems = useMapSideNavConfigToMenuItems(SideNavItems);
   const profilesActionMenuItems: MenuProps['items'] = [];
@@ -56,10 +55,13 @@ const SideNavBar = () => {
     navigate(AUTH.LOGIN);
   };
 
+  const onAppLogoClick = () => navigate(HOME.HOME);
+
   const onClickMoreActionItem = (actionItem: any) => {
     if (actionItem.key === 'logout') onLogout();
   };
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const sideBarActionItems = [
     <Button
       key="settings"
@@ -116,46 +118,31 @@ const SideNavBar = () => {
   return (
     <Sider
       theme="light"
-      width={350}
+      width={250}
       style={{ background: '', borderRight: '1px solid #f0f0f0' }}
       collapsible
-      onCollapse={setSideMenuCollapsed}
     >
-      <Card
-        style={{
-          border: 'none',
-          borderBottom: '1px solid #f0f0f0',
-          ...(isSideMenuCollapsed && { border: 'none' })
-        }}
-        styles={{
-          cover: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          },
-          body: { padding: 0 }
-        }}
-        cover={
-          <img
-            src={AppLogoText}
-            alt="app-logo-pic"
-            style={{
-              padding: 20,
-              width: 200,
-              ...(isSideMenuCollapsed && { marginTop: 10, padding: 5 })
-            }}
-          />
-        }
-        {...(!isSideMenuCollapsed && { actions: sideBarActionItems })}
-      />
+      <div
+        role="presentation"
+        className="flex cursor-pointer items-center justify-center"
+        onClick={onAppLogoClick}
+      >
+        <img
+          src={AppLogoIcon}
+          alt="app-logo-pic"
+          style={{
+            padding: 10,
+            borderRadius: 15
+          }}
+        />
+      </div>
       <Menu
         mode="inline"
         selectedKeys={selectedMenuItemKey}
         style={{
           height: 'calc(100% - 345px)',
           borderRight: 0,
-          overflow: 'auto',
-          marginTop: 20
+          overflow: 'auto'
         }}
         items={sideMenuItems}
         onClick={handleNavigate}
