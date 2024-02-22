@@ -1,8 +1,6 @@
 import { useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Layout, Menu, Button, Dropdown } from 'antd';
-import type { MenuProps } from 'antd';
-import { UserSwitchOutlined, SettingOutlined } from '@ant-design/icons';
+import { Layout, Menu } from 'antd';
 import AppLogoIcon from '@assets/logo/finhealth_full_logo_filled.png';
 import { SideNavItem } from '@types';
 import { HOME } from '@constants/routes';
@@ -20,7 +18,6 @@ const SideNavBar = () => {
   const navigate = useNavigate();
 
   const sideMenuItems = useMapSideNavConfigToMenuItems(SideNavItems);
-  const profilesActionMenuItems: MenuProps['items'] = [];
   const activeMenuItem = useMemo(
     () => getActiveMenuItem(currentPath, SideNavItems),
     [currentPath]
@@ -39,42 +36,6 @@ const SideNavBar = () => {
   };
 
   const onAppLogoClick = () => navigate(HOME.HOME);
-
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const sideBarActionItems = [
-    <Button
-      key="settings"
-      type="default"
-      shape="round"
-      icon={<SettingOutlined />}
-      style={{ padding: 2, border: 'none', boxShadow: 'none' }}
-      size="small"
-    >
-      Settings
-    </Button>,
-    <Dropdown
-      key="profiles"
-      menu={{
-        items: profilesActionMenuItems,
-        selectable: true,
-        defaultSelectedKeys: ['1']
-      }}
-      trigger={['click']}
-      overlayStyle={{ minWidth: 150 }}
-      placement="bottom"
-      arrow
-    >
-      <Button
-        type="default"
-        shape="round"
-        icon={<UserSwitchOutlined />}
-        style={{ padding: 2, border: 'none', boxShadow: 'none' }}
-        size="small"
-      >
-        Profiles
-      </Button>
-    </Dropdown>
-  ];
 
   return (
     <Sider
@@ -101,7 +62,7 @@ const SideNavBar = () => {
         mode="inline"
         selectedKeys={selectedMenuItemKey}
         style={{
-          height: 'calc(100% - 345px)',
+          height: 'calc(100% - 238px)',
           borderRight: 0,
           overflow: 'auto'
         }}

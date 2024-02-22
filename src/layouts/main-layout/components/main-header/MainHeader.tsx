@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Layout, Button, Badge } from 'antd';
-import { NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { BellOutlined, UserOutlined } from '@ant-design/icons';
 import SideMenuDrawer from '../side-menu-drawer/sideMenuDrawer';
 import colors from '../../../../../themes/colors';
 import BreadCrumbs from '../breadcrumbs/Breadcrumbs';
@@ -30,7 +30,7 @@ const MainHeader = () => {
             <div className="flex items-center justify-center">
               <Button
                 type="default"
-                icon={<NotificationOutlined />}
+                icon={<BellOutlined />}
                 onClick={onClickAppNotifications}
               />
             </div>

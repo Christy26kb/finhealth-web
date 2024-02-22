@@ -26,7 +26,8 @@ export type ValidationError = {
   [key: string]: string;
 };
 
-export * from './requests';
+export * from './authentication';
 export * from './notification';
 export * from './user';
 export * from './sidenav';
+export * from './profile';

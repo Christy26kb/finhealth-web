@@ -42,8 +42,8 @@ const MainLayout = () => {
       <SideNavBar />
       <Layout>
         <MainHeader />
-        <Layout style={{ padding: '0 24px 24px' }}>
-          <Content>
+        <Layout>
+          <Content className="bg-white">
             <Suspense
               fallback={
                 <div className="flex size-full items-center justify-center">
