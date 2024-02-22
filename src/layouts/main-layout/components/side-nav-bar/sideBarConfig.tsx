@@ -19,17 +19,6 @@ import {
   GroupOutlined
 } from '@ant-design/icons';
 
-export const MoreActionsMenuItems = [
-  {
-    label: 'Edit User',
-    key: 'edit_user'
-  },
-  {
-    label: 'Logout',
-    key: 'logout'
-  }
-];
-
 export const SideNavItems: SideNavItem[] = [
   {
     id: 'home',

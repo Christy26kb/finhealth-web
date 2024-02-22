@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Layout, Button } from 'antd';
+import { Layout, Button, Badge } from 'antd';
 import { NotificationOutlined, UserOutlined } from '@ant-design/icons';
 import SideMenuDrawer from '../side-menu-drawer/sideMenuDrawer';
 import colors from '../../../../../themes/colors';
@@ -26,13 +26,15 @@ const MainHeader = () => {
           <BreadCrumbs />
         </div>
         <div className="main-actions-section flex items-center justify-center">
-          <div className="flex items-center justify-center">
-            <Button
-              type="default"
-              icon={<NotificationOutlined />}
-              onClick={onClickAppNotifications}
-            />
-          </div>
+          <Badge count={5} overflowCount={5}>
+            <div className="flex items-center justify-center">
+              <Button
+                type="default"
+                icon={<NotificationOutlined />}
+                onClick={onClickAppNotifications}
+              />
+            </div>
+          </Badge>
           <div className="ml-4 flex items-center justify-center">
             <Button
               type="default"
