@@ -1,0 +1,25 @@
+.side-nav-bar {
+  background: '';
+  border-right: 1px solid #f0f0f0;
+}
+
+.side-nav-bar > .ant-layout-sider-trigger {
+  width: 249px !important;
+  border-top: 1px solid #f0f0f0;
+}
+
+.side-nav-bar-collapsed > .ant-layout-sider-trigger {
+  width: 79px !important;
+  border-top: 1px solid #f0f0f0;
+}
+
+.side-nav-bar .side-menu {
+  height: calc(100% - 238px);
+  border-right: 0px !important;
+  overflow: auto;
+}
+
+.side-nav-bar .app-logo-icon {
+  padding: 10px;
+  border-radius: 15px;
+}

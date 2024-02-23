@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Layout, Menu } from 'antd';
 import AppLogoIcon from '@assets/logo/finhealth_full_logo_filled.png';
@@ -11,11 +11,14 @@ import {
   getNavItemById
 } from './sideBarConfig';
 
+import '../../styles.css';
+
 const { Sider } = Layout;
 
 const SideNavBar = () => {
   const { pathname: currentPath } = useLocation();
   const navigate = useNavigate();
+  const [isSideBarCollapsed, setIsCollapsed] = useState(false);
 
   const sideMenuItems = useMapSideNavConfigToMenuItems(SideNavItems);
   const activeMenuItem = useMemo(
@@ -41,31 +44,23 @@ const SideNavBar = () => {
     <Sider
       theme="light"
       width={250}
-      style={{ background: '', borderRight: '1px solid #f0f0f0' }}
+      className={`side-nav-bar ${
+        isSideBarCollapsed ? 'side-nav-bar-collapsed' : ''
+      }`}
       collapsible
+      onCollapse={setIsCollapsed}
     >
       <div
         role="presentation"
         className="flex cursor-pointer items-center justify-center"
         onClick={onAppLogoClick}
       >
-        <img
-          src={AppLogoIcon}
-          alt="app-logo-pic"
-          style={{
-            padding: 10,
-            borderRadius: 15
-          }}
-        />
+        <img src={AppLogoIcon} alt="app-logo-pic" className="app-logo-icon" />
       </div>
       <Menu
         mode="inline"
         selectedKeys={selectedMenuItemKey}
-        style={{
-          height: 'calc(100% - 238px)',
-          borderRight: 0,
-          overflow: 'auto'
-        }}
+        className="side-menu"
         items={sideMenuItems}
         onClick={handleNavigate}
       />
