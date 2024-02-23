@@ -73,5 +73,12 @@
     "footer": {
       "logout": "Logout"
     }
+  },
+  "profiles": {
+    "list": {
+      "page_title": "Profiles",
+      "create_profile": "Add Profile",
+      "filters": "Filters"
+    }
   }
 }
