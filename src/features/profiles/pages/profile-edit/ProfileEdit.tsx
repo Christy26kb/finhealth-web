@@ -32,8 +32,6 @@ enum DefaultFieldItemValues {
 const defaultValues = {
   name: '',
   notes: '',
-  currency: '',
-  locale: '',
   monthly_email_report: false
 };
 
@@ -43,8 +41,13 @@ const ProfileEdit = (props: ProfileEditProps) => {
 
   const { isEdit } = props;
   const { profileId } = useParams();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [profileData, setProfileData] = useState(defaultValues);
+
+  // TODO: Find an optimal solution for Antd form issue.
+  // Note: Reset form data once the dynamic values are fetched
+  const [formKey, setFormKey] = useState(0);
+  // Note: Increment key to force update form with latest values
+  const resetFormValues = () => setFormKey((prevKey) => prevKey + 1);
 
   const [createProfile, { isLoading: isCreating }] =
     useCreateUserProfileMutation();
@@ -56,15 +59,14 @@ const ProfileEdit = (props: ProfileEditProps) => {
   const handleProfileEdit = async () => {
     if (profileId) {
       const response = await getUserProfile(profileId);
-      const propfileData = response?.data;
-      if (propfileData) {
+      const profile = response?.data;
+      if (profile) {
         setProfileData({
-          name: propfileData?.name,
-          notes: propfileData?.notes,
-          currency: propfileData?.currency,
-          locale: propfileData?.locale,
-          monthly_email_report: propfileData?.monthly_email_report
+          name: profile?.name,
+          notes: profile?.notes,
+          monthly_email_report: profile?.monthly_email_report
         });
+        resetFormValues();
       }
     }
   };
@@ -97,10 +99,13 @@ const ProfileEdit = (props: ProfileEditProps) => {
   return (
     <div className="profile-edit-section size-full p-6">
       <Form
+        key={formKey}
         name="profile-edit"
         className="flex flex-col"
         onFinish={onSubmitForm}
         layout="vertical"
+        initialValues={profileData}
+        disabled={isEdit ? isProfileLoading : false}
       >
         <div className="profile-edit-title flex w-full flex-row items-center justify-between">
           <div className="text-h4 font-normal leading-7">

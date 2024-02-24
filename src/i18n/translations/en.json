@@ -79,8 +79,10 @@
       "page_title": "Profiles",
       "create_profile": "Add Profile",
       "filters": "Filters",
-      "edit_tooltip": "Edit"
-
+      "edit_tooltip": "Edit",
+      "delete_tooltip": "Delete",
+      "delete_popup_title": "Are you sure delete this profile?",
+      "delete_success": "Profile deleted successfully."
     },
     "edit": {
       "create_title": "Create Profile",
