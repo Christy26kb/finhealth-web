@@ -78,7 +78,30 @@
     "list": {
       "page_title": "Profiles",
       "create_profile": "Add Profile",
-      "filters": "Filters"
+      "filters": "Filters",
+      "edit_tooltip": "Edit"
+
+    },
+    "edit": {
+      "create_title": "Create Profile",
+      "edit_title": "Edit Profile",
+      "name": "Name",
+      "name_error": "Please enter your profile name.",
+      "notes": "Notes",
+      "notes_error": "Shortly describe your profile or add notes.",
+      "currency": "Currency",
+      "currency_error": "Please choose your currency.",
+      "locale": "Locale",
+      "locale_error": "Please choose your locale.",
+      "monthly_email_report": "Monthly report",
+      "monthly_email_report_error": "Choose if you want email report.", 
+      "monthly_email_yes": "Yes",
+      "monthly_email_no": "No",
+      "save": "Save",
+      "cancel": "Cancel",
+      "create_succes": "Profile created successfully.",
+      "edit_succes": "Profile updated successfully.",
+      "update_failed": "Profile updation failed!"
     }
   }
 }

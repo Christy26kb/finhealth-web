@@ -45,4 +45,10 @@ export const extendedBaseQuery = baseApi.injectEndpoints({
   })
 });
 
-export const { useGetAllUserProfilesQuery } = extendedBaseQuery;
+export const {
+  useGetAllUserProfilesQuery,
+  useLazyGetUserProfileQuery,
+  useCreateUserProfileMutation,
+  useUpdateUserProfileMutation,
+  useDeleteUserProfileMutation
+} = extendedBaseQuery;
